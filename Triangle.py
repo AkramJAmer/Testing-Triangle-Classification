@@ -34,17 +34,22 @@ def classify_triangle(a, b, c):
     if (a + b <= c) or (a + c <= b) or (b + c <= a):
         return 'NotATriangle'
 
+    # Result variable to reduce return statements
+    result = None
+
     # Check for equilateral triangle
     if a == b == c:
-        return 'Equilateral'
-
+        result = 'Equilateral'
     # Check for right triangle using Pythagoras theorem
-    if (a ** 2 + b ** 2 == c ** 2) or (a ** 2 + c ** 2 == b ** 2) or (b ** 2 + c ** 2 == a ** 2):
-        return 'Right'
-
+    elif (a ** 2 + b ** 2 == c ** 2) or \
+         (a ** 2 + c ** 2 == b ** 2) or \
+         (b ** 2 + c ** 2 == a ** 2):
+        result = 'Right'
     # Check for isosceles triangle (exactly two equal sides)
-    if a == b or b == c or a == c:
-        return 'Isoceles'
-
+    elif a == b or b == c or a == c:
+        result = 'Isoceles'
     # If no sides are equal, it's a scalene triangle
-    return 'Scalene'
+    else:
+        result = 'Scalene'
+
+    return result
